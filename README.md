@@ -9,7 +9,8 @@ Write a CLI-command that should parse and save data from files to a database.
 Modify previous application to using db.
 Write tests using Phpunit. Add code coverage report.
 
-
+The project needs to be pinked on a Linux or Windows (wsl2 Unbuntu 20.04) platform.
+Docker, make must be installed
 ## Deployment
 
 ```bash
