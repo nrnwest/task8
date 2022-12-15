@@ -24,7 +24,7 @@ class RaceTimeCalculator
         $dateInterval = $endTime->diff($startTime);
 
         return new ResultTime(
-            $this->getTime($dateInterval, $this->getMilliseconds($dateInterval->f)),
+            $this->getTime($dateInterval, $this->getMilliseconds($dateInterval->f))
         );
     }
 
