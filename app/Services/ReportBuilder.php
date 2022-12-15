@@ -28,7 +28,7 @@ class ReportBuilder
         // build an array with the data from the three files, and record the lap time
         $table = $this->createDriverCollection($abbreviations, $start, $end);
         // write position
-        $table = $table->sortBy(fn(Driver $driver): float => $driver->getMicroTime());
+        $table = $table->sortBy(fn(Driver $driver) => $driver->getTime());
         $i = 1;
         foreach ($table as $value) {
             $value->setPosition($i);
@@ -36,7 +36,7 @@ class ReportBuilder
         }
         // sort user
         if ($sort !== ReportOrder::DEFAULT_ORDER) {
-            $table = $table->sortByDesc(fn(Driver $driver): float => $driver->getMicroTime());
+            $table = $table->sortByDesc(fn(Driver $driver) => $driver->getTime());
         }
 
         return $table;
@@ -49,7 +49,6 @@ class ReportBuilder
             $resultTime = $this->raceTimeCalculatorService->calculate($start[$key], $end[$key]);
             $driver = new Driver(
                 $resultTime->getTime(),
-                $resultTime->getMicroTime(),
                 $value->getDriverId(),
                 $value->getName(),
                 $value->getAuto()

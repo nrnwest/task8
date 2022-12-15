@@ -21,9 +21,9 @@ class ReportApiTest extends TestCase
 
     public function dataStrXml(): array
     {
-        $str[] = '<driverId>LHM</driverId><name>Lewis Hamilton</name><auto>MERCEDES</auto><microTime>';
-        $str[] = '<auto>MCLAREN RENAULT</auto><microTime>3672.999657</microTime><time>1:1:12.657</time>';
-        $str[] = '<position>19</position><driverId>BHS</driverId><name>Brendon Hartley</name>';
+        $str[] = '<root><0><id>1</id><position>1</position><driverId>LHM</driverId><name>Lewis Hamilton</name>';
+        $str[] = '<11><id>12</id><position>12</position><driverId>RGH</driverId><name>Romain Grosjean</name>';
+        $str[] = '</time></17><18><id>19</id><position>19</position><driverId>NHR</driverId><name>Nico';
 
         return [[$str]];
     }
@@ -41,7 +41,7 @@ class ReportApiTest extends TestCase
     public function dataValueJson()
     {
         $name = '18.name';
-        $valueName = 'Brendon Hartley';
+        $valueName = 'Nico Hulkenberg';
         return [[$name, $valueName]];
     }
 }

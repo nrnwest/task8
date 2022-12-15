@@ -18,8 +18,7 @@ return new class extends Migration {
             $table->string('driverId', 3);
             $table->string('name');
             $table->string('auto');
-            $table->double('microTime')->index();
-            $table->string('time');
+            $table->string('time')->index();
         });
     }
 

@@ -25,31 +25,30 @@ class RaceTimeCalculator
 
         return new ResultTime(
             $this->getTime($dateInterval, $this->getMilliseconds($dateInterval->f)),
-            $this->getSeconds($dateInterval)
         );
-    }
-
-    private function getSeconds(\DateInterval $dateInterval): float
-    {
-        return (($dateInterval->h * 60 * 60) + ($dateInterval->i * 60) + ($dateInterval->s + $dateInterval->f));
     }
 
     private function getTime(\DateInterval $dateInterval, int $milliSeconds): string
     {
         return
-            $dateInterval->h .
+            $this->addZeroAhead($dateInterval->h) .
             self::NOUN .
-            $dateInterval->i .
+            $this->addZeroAhead($dateInterval->i) .
             self::NOUN .
-            $dateInterval->s .
+            $this->addZeroAhead($dateInterval->s) .
             self::DOT .
-            $milliSeconds;
+            $this->addZeroAhead($milliSeconds);
+    }
+
+    private function addZeroAhead(int $number): string
+    {
+        return  $number < 10 ? '0' . $number : (string) $number;
     }
 
     private function getMilliseconds(float $microSeconds): int
     {
-        [, $milliSeconds] = explode(self::DOT, (string) ($microSeconds * 1000));
+        [, $milliSeconds] = explode(self::DOT, (string)($microSeconds * 1000));
 
-        return (int) $milliSeconds;
+        return (int)$milliSeconds;
     }
 }

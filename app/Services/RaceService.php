@@ -23,7 +23,7 @@ class RaceService
     public function getReport(?string $order = ReportOrder::DEFAULT_ORDER): Collection
     {
         return ReportModel::query()
-            ->orderBy('microTime', $order)
+            ->orderBy('time', $order)
             ->get();
     }
 
@@ -43,7 +43,6 @@ class RaceService
         $driver = ReportModel::where('driverId', '=', $driverId)->firstOrFail();
         $result = new Driver(
             $driver->time,
-            (float)$driver->microTime,
             $driver->driverId,
             $driver->name,
             $driver->auto

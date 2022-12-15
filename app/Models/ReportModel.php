@@ -38,8 +38,4 @@ class ReportModel extends Model
         return $this->driverId;
     }
 
-    public function getMicroTime(): string
-    {
-        return $this->microTime;
-    }
 }

@@ -10,7 +10,6 @@ class Driver implements Arrayable
 {
     public function __construct(
         private string $time,
-        private float $microTime,
         private string $driverId,
         private string $name,
         private string $auto,
@@ -45,11 +44,6 @@ class Driver implements Arrayable
     public function getTime(): string
     {
         return $this->time;
-    }
-
-    public function getMicroTime(): float
-    {
-        return $this->microTime;
     }
 
     public function getPosition(): int
