@@ -36,7 +36,11 @@ class ReportBuilder
         }
         // sort user
         if ($sort !== ReportOrder::DEFAULT_ORDER) {
-            $table = $table->sortByDesc(fn(Driver $driver) => $driver->getTime());
+            // alternative notation for function callback
+            $table = $table->sortByDesc(function (Driver $driver) {
+                return $driver->getTime();
+            }
+            );
         }
 
         return $table;

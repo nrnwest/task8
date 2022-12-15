@@ -6,11 +6,14 @@ namespace App\Services;
 
 use App\DTO\Driver;
 use App\Models\ReportModel;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 
 class RaceService
 {
+
+    public const DEFAULT_FIELD_SORT = 'time';
 
     public function __construct(
         private Config $config,
@@ -25,6 +28,14 @@ class RaceService
         return ReportModel::query()
             ->orderBy('time', $order)
             ->get();
+    }
+
+    public function getReportPaginator(
+        string $order = ReportOrder::DEFAULT_ORDER,
+        string $sortField = self::DEFAULT_FIELD_SORT,
+        int $numberRecords = 10
+    ): LengthAwarePaginator {
+        return ReportModel::orderBy($sortField, $order)->paginate($numberRecords);
     }
 
     public function getReportFile()

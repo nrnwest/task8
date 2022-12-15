@@ -5,10 +5,10 @@
     <table class="table">
         <thead class="table-dark">
         <tr>
-            <th scope="col"><a href="?order={{$order}}">Позиция</a></th>
-            <th scope="col">Имя Фамилия</th>
-            <th scope="col">Автомобиль</th>
-            <th scope="col">Время заезда</th>
+            <th scope="col"><a href="?order={{$order}}&sort_field=position">Позиция</a></th>
+            <th scope="col"><a href="?order={{$order}}&sort_field=name">Имя Фамилия</a></th>
+            <th scope="col"><a href="?order={{$order}}&sort_field=auto">Автомобиль</a></th>
+            <th scope="col"><a href="?order={{$order}}&sort_field=time">Время заезда</a></th>
         </tr>
         </thead>
         <tbody>
@@ -22,4 +22,5 @@
         @endforeach
         </tbody>
     </table>
+    {{ $report->withQueryString()->links() }}
 @endsection

@@ -23,11 +23,13 @@ class ReportController extends Controller
     public function index(Request $request): View
     {
         $order = $request->get(ReportOrder::KEY_ORDER);
+        $sortField = $request->get('sort_field', RaceService::DEFAULT_FIELD_SORT);
+
         return view(
             'report',
             [
                 ReportOrder::KEY_ORDER => $this->reportOrder->getOrderTemplate($order),
-                'report' => $this->raceService->getReport($this->reportOrder->getOrder($order))
+                'report' => $this->raceService->getReportPaginator($this->reportOrder->getOrder($order), $sortField)
             ]
         );
     }
@@ -35,11 +37,12 @@ class ReportController extends Controller
     public function drivers(Request $request): View
     {
         $order = $request->get(ReportOrder::KEY_ORDER);
+        $sortField = $request->get('sort_field', RaceService::DEFAULT_FIELD_SORT);
         return view(
             'drivers',
             [
                 ReportOrder::KEY_ORDER => $this->reportOrder->getOrderTemplate($order),
-                'report' => $this->raceService->getReport($this->reportOrder->getOrder($order))
+                'report' => $this->raceService->getReportPaginator($this->reportOrder->getOrder($order), $sortField)
             ]
         );
     }

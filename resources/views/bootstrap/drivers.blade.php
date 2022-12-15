@@ -5,9 +5,9 @@
     <table class="table">
         <thead class="table-dark">
         <tr>
-            <th scope="col"><a href="?order={{$order}}">Позиция</a></th>
-            <th scope="col">Имя Фамилия</th>
-            <th scope="col">Код</th>
+            <th scope="col"><a href="?order={{$order}}&sort_field=position">Позиция</a></th>
+            <th scope="col"><a href="?order={{$order}}&sort_field=name">Имя Фамилия</a></th>
+            <th scope="col"><a href="?order={{$order}}&sort_field=driverId">Код</a></th>
         </tr>
         </thead>
         <tbody>
@@ -21,4 +21,5 @@
 
         </tbody>
     </table>
+    {{ $report->withQueryString()->links() }}
 @endsection
