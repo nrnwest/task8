@@ -48,7 +48,7 @@ php:
 
 # all tests
 test:
-	${DOCKER_COMPOSE} ${DOCKER_COMPOSE_EXEC} php vendor/bin/phpunit
+	${DOCKER_COMPOSE} ${DOCKER_COMPOSE_EXEC} php artisan test
 
 composer:
 	${DOCKER_COMPOSE} ${DOCKER_COMPOSE_EXEC} composer install
