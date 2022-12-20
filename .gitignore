@@ -3,3 +3,7 @@
 /.idea
 #.env
 README_MY.md
+docker-compose.yml
+/node_modules/
+
+

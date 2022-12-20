@@ -7,7 +7,8 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.98.0">
     <title>@yield('title')</title>
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('/bootstrap/css/bootstrap.min.css')}}">
+    {{--<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -63,7 +64,8 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="/bootstrap/css/navbar.css" rel="stylesheet">
+    {{--<link href="/bootstrap/css/navbar.css" rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{asset('bootstrap/css/navbar.css')}}">
 </head>
 <body>
 
@@ -122,8 +124,6 @@
         </div>
     </div>
 </main>
-
-<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

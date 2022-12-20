@@ -15,6 +15,11 @@ COPY ./_docker/php-fpm/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 # Postgres && Mysql
 RUN apk add --no-cache libpq-dev && docker-php-ext-install pdo_mysql
 
+# node js
+RUN apk add --update nodejs npm
+RUN apk add --update npm
+
+
 # Configure non-root user.
 ARG PUID=1000
 ARG PGID=1000

@@ -4,11 +4,20 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Http\Controllers;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Post;
 use Tests\TestCase;
 
 class ReportTest extends TestCase
 {
+    use RefreshDatabase;
+
+    /**
+     * to populate the database
+     * @var bool
+     */
+    protected $seed = true;
+
     public function testRedirect(): void
     {
         $response = $this->get('/');
