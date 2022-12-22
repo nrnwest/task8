@@ -23,4 +23,6 @@
         </tbody>
     </table>
     {{ $report->withQueryString()->links() }}
+    @captcha
+    <input type="text" id="captcha" name="captcha" autocomplete="off">
 @endsection

@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "bonecms/laravel-captcha": "^2.2",
         "darkaonline/l5-swagger": "^8.3",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.11",

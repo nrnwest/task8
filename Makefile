@@ -6,8 +6,8 @@ DOCKER_COMPOSE = docker-compose -f ./_docker/docker-compose.yml --env-file ./_do
 DOCKER_COMPOSE_EXEC = exec -u www-data php-fpm
 
 PRINT_SEPARATOR = "\n\n"
-PRINT_WELCOME = Welcome: http://localhost:5000
-PRINT_SWAGGER = Swagger: http://localhost:5000/api/documentation
+PRINT_WELCOME = Welcome: http://localhost:4441
+PRINT_SWAGGER = Swagger: http://localhost:4441/api/documentation
 PRINT_PHPMYADMIN = phpMyAdmin: http://localhost:4444
 
 ##################
@@ -37,6 +37,9 @@ down:
 
 restart:
 	make stop start
+
+net:
+	docker network ls
 
 
 ##################
@@ -69,7 +72,7 @@ db_add:
 #################
 #  Deployment
 #################
-dep:
+init:
 	make build up composer pause db_add print
 
 pause:

@@ -1,8 +1,9 @@
 version: "3.8"
 
 services:
+
   php-fpm:
-    container_name: php-fpm
+    container_name: ${COMPOSE_PROJECT_NAME}_php-fpm
     build:
       context: ./../
       dockerfile: ./_docker/php-fpm/Dockerfile
@@ -16,7 +17,7 @@ services:
       - ./../:/var/www/
 
   nginx:
-    container_name: nginx
+    container_name: ${COMPOSE_PROJECT_NAME}_nginx
     build:
       context: ./nginx
     ports:
@@ -27,11 +28,11 @@ services:
       - php-fpm
 
   mysql:
-    container_name: mysql
+    container_name: ${COMPOSE_PROJECT_NAME}_mysql
     build:
       context: ./mysql
     ports:
-      - "${MYSQL_PORT}:${MYSQL_PORT}"
+      - "${MYSQL_PORT}:3306"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -42,7 +43,7 @@ services:
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
 
   phpmyadmin:
-    container_name: phpmyadmin
+    container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
     build:
       context: ./phpmyadmin
     restart: always
